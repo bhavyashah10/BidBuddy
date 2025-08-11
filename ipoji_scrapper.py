@@ -144,8 +144,8 @@ class IPOScraper:
         page_text = soup.get_text()
         
         # Debug: Print first 500 characters to see the structure
-        print("First 500 characters of page text:")
-        print(repr(page_text[:500]))
+        # print("First 500 characters of page text:")
+        # print(repr(page_text[:500]))
         print("\n" + "="*50)
         
         # Look for "Offer Date:" pattern specifically
@@ -164,9 +164,10 @@ class IPOScraper:
         print(f"Found {len(ipo_blocks)} potential IPO blocks")
         
         # Debug: print first few blocks
-        for i, block in enumerate(ipo_blocks[:3]):
+        for i, block in enumerate(ipo_blocks):
             print(f"\nBlock {i+1} preview:")
-            print(repr(block[:200]))
+            print(repr(block:500))
+            print()
         
         for i, block in enumerate(ipo_blocks):
             try:
@@ -238,22 +239,37 @@ class IPOScraper:
         
         # Extract company name - it's usually at the end after other data
         # Look for text after "Check Allotment" or similar
+        # Improved patterns with better specificity
         name_patterns = [
-            r'Check Allotment([A-Za-z\s&.-]+)$',
-            r'View Check Allotment([A-Za-z\s&.-]+)$',
-            r'Allotment[A-Za-z\s]*([A-Z][A-Za-z\s&.-]{10,})$'
+            # Pattern 1: "Check Allotment" followed by company name
+            r'Check Allotment\s*([A-Za-z][A-Za-z\s&.-]{2,}?)(?:\s*$|\s*[A-Z][a-z])',
+            
+            # Pattern 2: "View Check Allotment" followed by company name  
+            r'View Check Allotment\s*([A-Za-z][A-Za-z\s&.-]{2,}?)(?:\s*$|\s*[A-Z][a-z])',
+            
+            # Pattern 3: "Allotment" variations followed by company name
+            r'Allotment[A-Za-z\s]*?\s+([A-Z][A-Za-z\s&.-]{3,}?)(?:\s*$|\s*[A-Z][a-z])',
+            
+            # Pattern 4: Company name at the end after common IPO terms
+            r'(?:View Apply|Check Allotment|Allotment Awaited).*?([A-Z][A-Za-z\s&.-]+(?:REIT|Trust|Limited|Ltd|Inc|Corp|Company|Group|Holdings|Ventures|Industries|Systems|Solutions|Technologies|Healthcare|Plastics|Cement|Lab|Cast|Cinemas)?)(?:\s*$)',
+            
+            # Pattern 5: Last capitalized word sequence (fallback)
+            r'([A-Z][A-Za-z]+(?:\s+[A-Z&][A-Za-z]+)*(?:\s+(?:REIT|Trust|Limited|Ltd|Inc|Corp|Company|Group|Holdings|Ventures|Industries|Systems|Solutions|Technologies|Healthcare|Plastics|Cement|Lab|Cast|Cinemas)))(?:\s*$)'
         ]
-        
-        for pattern in name_patterns:
+    
+        for i, pattern in enumerate(name_patterns, 1):
             name_match = re.search(pattern, full_text)
             if name_match:
                 company_name = name_match.group(1).strip()
                 # Clean up the name
-                company_name = re.sub(r'\s+', ' ', company_name)
-                if len(company_name) > 3:
+                company_name = re.sub(r'\s+', ' ', company_name)  # Normalize whitespace
+                company_name = re.sub(r'^[.\-\s]+|[.\-\s]+$', '', company_name)  # Remove leading/trailing punctuation
+                # Validate the extracted name
+                if len(company_name) > 3 and not re.match(r'^[0-9\s\-\.]+$', company_name):
                     ipo_data['company_name'] = company_name
+                    print(f"Pattern {i} matched: '{company_name}'")
                     break
-        
+
         # Extract offer dates
         date_match = re.search(r'Offer Date:\s*([A-Za-z]+ \d+, \d+ - [A-Za-z]+ \d+, \d+)', full_text)
         if date_match:

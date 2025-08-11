@@ -1,17 +1,17 @@
 company_name,offer_price_min,offer_price_max,lot_size,subscription_times,expected_premium,premium_percentage,offer_start_date,offer_end_date,ipo_type,investment_per_lot
-Sawaliya Foods Products,65,70,211,300.61,25.5,35.71,2025-08-05,2025-08-07,Current,14242
-Connplex Cinemas,114,120,1200,13.39,,,2025-08-07,2025-08-11,Current,140400
-All Time Plastics,168,177,800,35.74,12.5,6.78,2025-08-07,2025-08-11,Current,138000
-Unknown Company,260,275,54,8.34,5.5,1.82,2025-08-07,2025-08-11,Current,14445
-Unknown Company,139,147,102,7.77,5.0,2.72,2025-08-07,2025-08-11,Current,14586
-Unknown Company,135,142,1000,0.38,,,2025-08-08,2025-08-12,Current,138500
-Unknown Company,43,43,3000,77.68,9.5,20.93,2025-08-08,2025-08-12,Current,129000
-Unknown Company,148,156,800,0.69,,,2025-08-08,2025-08-12,Current,121600
-Icodex Publishing Solutions,95,100,150,1.19,,,2025-08-05,2025-08-07,Current,14625
-Unknown Company,98,102,1200,0.39,,,2025-08-11,2025-08-13,Current,120000
-Unknown Company,492,517,29,0.39,9.5,1.74,2025-08-11,2025-08-13,Current,14630
+Sawaliya,65,70,211,300.61,25.5,35.71,2025-08-05,2025-08-07,Current,14242
+Connplex,114,120,1200,13.39,,,2025-08-07,2025-08-11,Current,140400
+Awaited,168,177,800,35.74,12.5,6.78,2025-08-07,2025-08-11,Current,138000
+Bid history for current IP,260,275,54,8.34,5.5,1.82,2025-08-07,2025-08-11,Current,14445
+Bid history for current IP,139,147,102,7.77,5.0,2.72,2025-08-07,2025-08-11,Current,14586
+AM.Medistep Healthcare,135,142,1000,0.38,,,2025-08-08,2025-08-12,Current,138500
+AM.ANB Metal Cast,43,43,3000,77.68,9.5,20.93,2025-08-08,2025-08-12,Current,129000
+AM.Knowledge Realty Trust REIT,148,156,800,0.69,,,2025-08-08,2025-08-12,Current,121600
+Icodex,95,100,150,1.19,,,2025-08-05,2025-08-07,Current,14625
+AM.BlueStone Jewellery & Lifestyle,98,102,1200,0.39,,,2025-08-11,2025-08-13,Current,120000
+AM.Mahendra Realtors & Infrastructure,492,517,29,0.39,9.5,1.74,2025-08-11,2025-08-13,Current,14630
 Unknown Company,75,85,1600,,,,2025-08-12,2025-08-14,Current,128000
 Unknown Company,96,102,144,,21.5,20.59,2025-08-12,2025-08-14,Current,14256
 Unknown Company,240,252,58,,9.5,3.57,2025-08-19,2025-08-21,Current,14268
 Unknown Company,237,255,58,,23.0,8.63,2025-08-19,2025-08-21,Current,14268
-Essex Marine,65,70,211,300.61,,,2025-08-05,2025-08-07,Current,14242
+Essex,65,70,211,300.61,,,2025-08-05,2025-08-07,Current,14242
