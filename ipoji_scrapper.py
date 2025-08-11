@@ -166,7 +166,7 @@ class IPOScraper:
         # Debug: print first few blocks
         for i, block in enumerate(ipo_blocks):
             print(f"\nBlock {i+1} preview:")
-            print(repr(block:500))
+            print(repr(block[:500]))
             print()
         
         for i, block in enumerate(ipo_blocks):
